@@ -1,18 +1,17 @@
 package cache_test
 
 import (
-	// "strconv"
+	"math/rand"
+	"strconv"
 	"testing"
-	// "time"
-
-	// "math/rand"
+	"time"
 
 	cache "github.com/cachego/disk"
 )
 
 func TestCache(t *testing.T) {
 	key := "key1"
-	c := cache.NewInDiskCache(".cache")
+	c := cache.NewInDiskStrCache(".cache")
 	c.Set(key, "value", 0)
 	v, err := c.Get(key)
 	if err != nil {
@@ -35,7 +34,7 @@ func TestRandCache(t *testing.T) {
 	key := "key2"
 	for i := 0; i < 10; i++ {
 		value := strconv.Itoa(rand.Intn(25))
-		c := cache.NewInDiskCache(".cache")
+		c := cache.NewInDiskStrCache(".cache")
 		c.Set(key, value, 0)
 		v, err := c.Get(key)
 		if err != nil {
@@ -59,7 +58,7 @@ func BenchmarkRandCache(b *testing.B) {
 	key := "key2"
 	for i := 0; i < b.N; i++ {
 		value := strconv.Itoa(rand.Intn(25))
-		c := cache.NewInDiskCache(".cache")
+		c := cache.NewInDiskStrCache(".cache")
 		c.Set(key, value, 0)
 		v, err := c.Get(key)
 		if err != nil {
@@ -81,7 +80,7 @@ func BenchmarkRandCache(b *testing.B) {
 
 func TestIsHit(t *testing.T) {
 	key := "key1"
-	c := cache.NewInDiskCache(".cache")
+	c := cache.NewInDiskStrCache(".cache")
 	c.Set(key, "value", 0)
 	isHit, err := c.IsHit(key)
 	if err != nil {
@@ -94,7 +93,7 @@ func TestIsHit(t *testing.T) {
 
 func TestClear(t *testing.T) {
 	key := "key1"
-	c := cache.NewInDiskCache(".cache")
+	c := cache.NewInDiskStrCache(".cache")
 	c.Set(key, "value", time.Second)
 	time.Sleep(time.Second * 2)
 	err := c.Clear()

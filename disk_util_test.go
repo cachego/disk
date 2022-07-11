@@ -18,7 +18,7 @@ func TestDeleteFile(t *testing.T) {
 }
 
 func TestGetFileData(t *testing.T) {
-	err := cache.CoverFile(".cache", "test", "data1")
+	err := cache.CoverFile(".cache", "test", []byte("data1"))
 	if err != nil {
 		t.Errorf("expected value to be nil, got '%s'", err)
 	}
@@ -26,8 +26,8 @@ func TestGetFileData(t *testing.T) {
 	if err != nil {
 		t.Errorf("expected value to be nil, got '%s'", err)
 	}
-	if data != "data1" {
-		t.Errorf("expected value to be 'test', got '%s'", data.(string))
+	if string(data) != "data1" {
+		t.Errorf("expected value to be 'test', got '%s'", data)
 	}
 	err = cache.DeleteFile(".cache", "test")
 	if err != nil {

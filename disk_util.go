@@ -1,7 +1,6 @@
 package cache
 
 import (
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -30,22 +29,16 @@ func DeleteFile(dir string, key string) (err error) {
 }
 
 // cover data to file
-func CoverFile(dir string, key string, data interface{}) error {
+func CoverFile(dir string, key string, data []byte) error {
 	path := buildFilePath(dir, key)
 	creatDir(dir)
-	jsonData, err := json.Marshal(data)
-	if err != nil {
-		return err
-	}
-	return ioutil.WriteFile(path, jsonData, 0644)
+	return ioutil.WriteFile(path, data, 0644)
 }
 
 // get file data
-func GetFileData(dir string, key string) (v interface{}, err error) {
+func GetFileData(dir string, key string) ([]byte, error) {
 	path := buildFilePath(dir, key)
-	data, err := ioutil.ReadFile(path)
-	err = json.Unmarshal(data, &v)
-	return
+	return ioutil.ReadFile(path)
 }
 
 // check file exists
