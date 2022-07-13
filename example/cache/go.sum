@@ -1,0 +1,4 @@
+github.com/cachego/cache v0.0.2 h1:gKeTIeWuy8+I/ZzscWH9c43LAynTFSHtCM84xMxtA84=
+github.com/cachego/cache v0.0.2/go.mod h1:gTjHgGWtrBKCwJSR8ombPc1uRJQyji03JdxHoGUFFOs=
+github.com/cachego/disk v0.0.0-20220711034516-4f80e3b80daa h1:VzOBinEOqpM+HMEFuAlE15XvGkYmm1NK47vFYjYmHug=
+github.com/cachego/disk v0.0.0-20220711034516-4f80e3b80daa/go.mod h1:OLaSPp2Dl8mB2ovvISA9qw6WKuW/WzShAmg3qJAzRVU=
