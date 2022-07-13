@@ -23,7 +23,7 @@ go get github.com/cachego/disk
 
 ## Demo
 
-[Complete example](https://github.com/cachego/disk/example)
+[Complete example](https://github.com/cachego/disk/tree/main/example)
 
 ### 1. cache demo
 
